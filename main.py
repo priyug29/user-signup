@@ -24,7 +24,7 @@ def user_signup():
 
 
     verify_password_error = ''
-    if verify_password != password:
+    if verify_password != password or verify_password == '':
         verify_password_error = "Password don't match."
         verify_password = ''
 
@@ -35,10 +35,10 @@ def user_signup():
             email_error = "That's not valid email."
 
     
-    if username_error or password_error or verify_password_error or email_error:
-        return render_template('edit.html', username_error=username_error, password_error=password_error, verify_password_error=verify_password_error, 
-        email_error=email_error, username=username, email=email)
-    else:
+    if username_error or password_error or verify_password_error or email_error :
+        return render_template('edit.html', username_error=username_error, password_error=password_error, 
+            verify_password_error=verify_password_error, email_error=email_error, username=username, email=email)
+    else:       
         return render_template('welcome.html', username=username)
     
     
